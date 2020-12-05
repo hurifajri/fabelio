@@ -1,3 +1,39 @@
 :root {
   --main-color: #106cc8;
+  --white-color: #fff;
+}
+
+::-webkit-input-placeholder {
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
+}
+
+::placeholder {
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
 }
