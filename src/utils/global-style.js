@@ -2,13 +2,15 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 :root {
-  --big: 1rem;
-  --bold: 600;
-  --normal: 300;
   --color-primary: #106cc8;
+  --color-secondary: #ff9b08;
   --color-white: #fff;
   --radius: 5px;
   --shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
+  --size-big: 1rem;
+  --size-normal: .85rem;
+  --weight-bold: 900;
+  --weight-normal: 300;
 }
 
 ::-webkit-input-placeholder {

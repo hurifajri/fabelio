@@ -5,12 +5,14 @@ export default () => (
   <Card>
     <CardHeader>
       <Title>Product Name</Title>
-      <span>Price</span>
+      <Subtitle>Price</Subtitle>
     </CardHeader>
     <CardBody>
       <p>adasd</p>
     </CardBody>
-    <CardFooter>Delivery Days</CardFooter>
+    <CardFooter>
+      <FooterTitle>Delivery Days</FooterTitle>
+    </CardFooter>
   </Card>
 );
 
@@ -26,8 +28,25 @@ const CardHeader = styled.div`
   align-content: center;
 `;
 
-const Title = styled.h2``;
+const Title = styled.h2`
+  font-size: var(--size-big);
+  font-weight: var(--weight-bold);
+  margin: 0;
+`;
+
+const Subtitle = styled.span`
+  color: var(--color-secondary);
+  font-size: var(--size-normal);
+  font-weight: var(--weight-bold);
+`;
 
 const CardBody = styled.div``;
 
-const CardFooter = styled.div``;
+const CardFooter = styled.div`
+  text-align: right;
+`;
+
+const FooterTitle = styled(Subtitle)`
+  color: var(--color-primary);
+  text-decoration: underline;
+`;

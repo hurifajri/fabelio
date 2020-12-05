@@ -7,8 +7,8 @@ export default ({ placeholder }) => (
 
 const SearchField = styled.input`
   color: var(--color-white);
-  font-size: var(--big);
-  font-weight: var(--bold);
+  font-size: var(--size-big);
+  font-weight: var(--weight-bold);
   background-color: transparent;
   border: none;
   border-bottom: 1px solid var(--color-white);

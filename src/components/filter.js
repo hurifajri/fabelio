@@ -20,7 +20,7 @@ export default ({ placeholderButtonLabel }) => {
       '&:hover, &:read-only': {
         backgroundColor: 'var(--color-white)',
       },
-      fontWeight: 'var(--normal)',
+      fontWeight: 'var(--weight-normal)',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
