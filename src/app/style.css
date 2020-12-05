@@ -37,3 +37,12 @@
   font-weight: 600;
   opacity: 1;
 }
+
+[class$='-option'] input[type='checkbox'],
+[class*='-option '] input[type='checkbox'] {
+  order: 2;
+}
+
+input[type='checkbox']:checked {
+  background: rgba(0, 0, 0, 0);
+}
