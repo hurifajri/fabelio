@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Main } from '../components/';
+import { Header, Main } from '../containers/';
 import './style.css';
 import './simple-grid.css';
 import styled from 'styled-components';
