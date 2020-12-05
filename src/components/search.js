@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default () => <SearchField type="text" placeholder="Search Furniture" />;
+export default ({ placeholder }) => (
+  <SearchField type="text" placeholder={placeholder} />
+);
 
 const SearchField = styled.input`
-  color: var(--white-color);
-  font-size: 1rem;
-  font-weight: 600;
+  color: var(--color-white);
+  font-size: var(--big);
+  font-weight: var(--bold);
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid var(--white-color);
+  border-bottom: 1px solid var(--color-white);
   width: 100%;
   &:focus {
     outline: none;

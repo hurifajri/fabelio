@@ -12,16 +12,15 @@ export default ({ placeholderButtonLabel }) => {
       display: 'none',
     }),
     menu: () => ({
-      borderRadius: '6px',
-      boxShadow:
-        '0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02)',
+      borderRadius: 'var(--radius)',
+      boxShadow: 'var(--shadow)',
     }),
     option: provided => ({
       ...provided,
       '&:hover, &:read-only': {
-        backgroundColor: 'var(--white-color)',
+        backgroundColor: 'var(--color-white)',
       },
-      fontWeight: 'normal',
+      fontWeight: 'var(--normal)',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',

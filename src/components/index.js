@@ -1,4 +1,5 @@
+import Card from './card';
 import Filter from './filter';
 import Search from './search';
 
-export { Filter, Search };
+export { Card, Filter, Search };

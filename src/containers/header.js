@@ -1,13 +1,13 @@
+import { Filter, Search } from '../components';
 import React from 'react';
 import styled from 'styled-components';
-import { Filter, Search } from '../components';
 
 export default () => (
   <Header className="row">
     <div className="col-12">
       <div className="row">
         <div className="col-6">
-          <Search />
+          <Search placeholder="Search Furniture" />
         </div>
       </div>
       <div className="row">
@@ -23,5 +23,5 @@ export default () => (
 );
 
 const Header = styled.header`
-  background-color: var(--main-color);
+  background-color: var(--color-primary);
 `;
