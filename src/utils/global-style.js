@@ -1,9 +1,46 @@
-/**
-*** SIMPLE GRID
-*** (C) ZACH COLE 2016
-**/
+import { createGlobalStyle } from 'styled-components';
 
-/* UNIVERSAL */
+export default createGlobalStyle`
+:root {
+  --big: 1rem;
+  --bold: 600;
+  --normal: 300;
+  --color-primary: #106cc8;
+  --color-white: #fff;
+  --radius: 5px;
+  --shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
+}
+
+::-webkit-input-placeholder {
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
+}
+::-moz-placeholder {
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
+}
+::-ms-input-placeholder {
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
+}
+::placeholder {
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
+}
 
 html,
 body {
@@ -13,80 +50,18 @@ body {
   padding: 0;
   left: 0;
   top: 0;
+  font-family: Helvetica, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   font-size: 100%;
 }
 
-/* ROOT FONT STYLES */
-
-* {
-  font-family: Helvetica, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-  color: #333447;
-  line-height: 1.5;
+[class$='-option'] input[type='checkbox'] {
+  order: 2;
 }
 
-/* TYPOGRAPHY */
-
-h1 {
-  font-size: 2.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.375rem;
-}
-
-h4 {
-  font-size: 1.125rem;
-}
-
-h5 {
-  font-size: 1rem;
-}
-
-h6 {
-  font-size: 0.875rem;
-}
-
-p {
-  font-size: 1.125rem;
-  font-weight: 200;
-  line-height: 1.8;
-}
-
-.font-light {
-  font-weight: 300;
-}
-
-.font-regular {
-  font-weight: 400;
-}
-
-.font-heavy {
-  font-weight: 700;
-}
-
-/* POSITIONING */
-
-.left {
-  text-align: left;
-}
-
-.right {
-  text-align: right;
-}
-
-.center {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.justify {
-  text-align: justify;
-}
+/**
+*** SIMPLE GRID
+*** (C) ZACH COLE 2016
+**/
 
 /* ==== GRID SYSTEM ==== */
 
@@ -249,3 +224,4 @@ p {
     max-width: 60rem;
   }
 }
+`;
