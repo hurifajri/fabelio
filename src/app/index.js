@@ -1,14 +1,16 @@
-import React from 'react';
 import { Header, Main } from '../containers/';
-import './style.css';
-import './simple-grid.css';
+import React, { Fragment } from 'react';
+import { GlobalStyle } from '../utils/';
 import styled from 'styled-components';
 
 export default () => (
-  <Container className="container">
-    <Header />
-    <Main />
-  </Container>
+  <Fragment>
+    <GlobalStyle />
+    <Container className="container">
+      <Header />
+      <Main />
+    </Container>
+  </Fragment>
 );
 
 const Container = styled.div`
