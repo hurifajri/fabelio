@@ -34,7 +34,21 @@
     ]
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "sort-imports": [
+        "warn",
+        {
+          "ignoreCase": true,
+          "memberSyntaxSortOrder": [
+            "all",
+            "multiple",
+            "single",
+            "none"
+          ]
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
