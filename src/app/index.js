@@ -5,6 +5,12 @@ import { GlobalStyle } from '../utils/';
 import styled from 'styled-components';
 
 export default () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const isSearched = searchTerm => product =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+  const onChangeSearch = e => setSearchTerm(e.target.value);
+
   // Initial array to store the result data
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -27,12 +33,17 @@ export default () => {
 
     fetchData();
   }, []);
+
+  console.log(data);
+  const products = data?.products || [];
+  const filteredProducts = products.filter(isSearched(searchTerm));
+
   return (
     <Fragment>
       <GlobalStyle />
       <Container className="container">
-        <Header data={data} />
-        <Main data={data} loading={loading} />
+        <Header searchTerm={searchTerm} onChangeSearch={onChangeSearch} />
+        <Main products={filteredProducts} />
       </Container>
     </Fragment>
   );

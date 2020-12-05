@@ -1,8 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default ({ placeholder }) => (
-  <SearchField type="text" placeholder={placeholder} />
+export default ({ placeholder, onChange, value }) => (
+  <SearchField
+    type="search"
+    placeholder={placeholder}
+    onChange={onChange}
+    value={value}
+  />
 );
 
 const SearchField = styled.input`
