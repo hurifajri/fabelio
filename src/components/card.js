@@ -1,20 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default () => (
-  <Card>
-    <CardHeader>
-      <Title>Product Name</Title>
-      <Subtitle>Price</Subtitle>
-    </CardHeader>
-    <CardBody>
-      <p>adasd</p>
-    </CardBody>
-    <CardFooter>
-      <FooterTitle>Delivery Days</FooterTitle>
-    </CardFooter>
-  </Card>
-);
+export default props => {
+  const { name, price, description, furnitureStyle, deliveryTime } = props;
+
+  // Create a readable price format
+  const formattedPrice = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  })
+    .format(price)
+    .replace(/(\.|,)00$/g, '');
+
+  // Limit character for description
+  const limitedDescription = description.substr(0, 114) + '...';
+
+  // Iterate through furniture_styles array
+  const furnitureStyleItem = furnitureStyle?.map((style, i) => (
+    <li key={i}>{style + (i !== furnitureStyle.length - i ? ',' : '')}</li>
+  ));
+
+  return (
+    <Card>
+      <CardHeader>
+        <Title>{name}</Title>
+        <Subtitle>{formattedPrice}</Subtitle>
+      </CardHeader>
+      <CardBody>
+        <Description>{limitedDescription}</Description>
+        <List>{furnitureStyleItem}</List>
+      </CardBody>
+      <CardFooter>
+        <FooterTitle>Pengiriman: {deliveryTime} hari</FooterTitle>
+      </CardFooter>
+    </Card>
+  );
+};
 
 const Card = styled.div`
   border-radius: var(--radius);
@@ -41,6 +62,20 @@ const Subtitle = styled.span`
 `;
 
 const CardBody = styled.div``;
+
+const Description = styled.p``;
+
+const List = styled.ul`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  padding-left: 0;
+  & li {
+    margin-right: 5px;
+    color: var(--color-primary);
+  }
+`;
 
 const CardFooter = styled.div`
   text-align: right;
