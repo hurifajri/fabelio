@@ -1,10 +1,22 @@
-import { Card } from '../components';
+import { Card, CardLoader } from '../components';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Main = function ({ products }) {
+const Main = function ({ products, isLoading }) {
+  // Create empty dummy data
+  const dummy = [];
+  for (let i = 0; i <= 7; i++) {
+    dummy.push(i);
+  }
+
   return (
     <main className="row">
+      {isLoading &&
+        dummy.map((item, i) => (
+          <div className="col-6" key={i}>
+            <CardLoader />
+          </div>
+        ))}
       {products.map(product => (
         <div className="col-6" key={product.name}>
           <Card
@@ -24,4 +36,5 @@ export default Main;
 
 Main.propTypes = {
   products: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };

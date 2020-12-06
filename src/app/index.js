@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 export default () => {
   // Fetch data by using hook
-  const [data] = useApi(`${Const.BASE}${Const.ID}`);
+  const [data, isLoading] = useApi(`${Const.BASE}${Const.ID}`);
 
   // In case the result data is undefined, assign an empty array
   const furnitureStyles = data?.furniture_styles || [];
@@ -36,7 +36,7 @@ export default () => {
           selectedTime={selectedTime}
           onSelectTime={setSelectedTime}
         />
-        <Main products={filteredProducts} />
+        <Main products={filteredProducts} isLoading={isLoading} />
       </Container>
     </Fragment>
   );
