@@ -1,27 +1,12 @@
+import { GlobalStyle, Path } from '../utils/';
 import { Header, Main } from '../containers/';
-import React, { Fragment, useEffect, useState } from 'react';
-import axios from 'axios';
-import { GlobalStyle } from '../utils/';
+import React, { Fragment, useState } from 'react';
 import styled from 'styled-components';
+import { useApi, useFilter } from '../hooks';
 
 export default () => {
-  // Initial array to store the result data
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(
-        'http://www.mocky.io/v2/5c9105cb330000112b649af8',
-        {
-          params: {
-            _limit: 10,
-          },
-        }
-      );
-      setData(result.data);
-    };
-
-    fetchData();
-  }, []);
+  // Fetch data by using hook
+  const [data] = useApi(`${Path.BASE}${Path.ID}`);
 
   // In case the result data is undefined, assign an empty array
   const furnitureStyles = data?.furniture_styles || [];
@@ -29,17 +14,16 @@ export default () => {
 
   // Store typed search term by user
   const [searchTerm, setSearchTerm] = useState('');
-
-  // Record the user typing
   const handleChangeSearch = event => setSearchTerm(event.target.value);
 
-  // Store the selected furniture style from the filter and get only the label
+  // Store the selected furniture style and delivery time from the filters and get only the label and value
   const [selectedStyle, setSelectedStyle] = useState([]);
-  const selectedStyleLabel = selectedStyle?.map(item => item.label);
-
-  // Store the selected furniture style from the filter and get only the value
   const [selectedTime, setSelectedTime] = useState([]);
-  const selectedTimeValue = selectedTime?.map(item => item.value);
+  const getItem = (array, callback) => array.map(callback);
+  const labelCallback = item => item.label;
+  const valueCallback = item => item.value;
+  const selectedStyleLabel = getItem(selectedStyle, labelCallback);
+  const selectedTimeValue = getItem(selectedTime, valueCallback);
 
   // Determines whether search term is match to product name
   const search = searchTerm => product =>
@@ -78,6 +62,7 @@ export default () => {
       : searchTerm && selectedStyle.length === 0 && selectedTime.length === 0
       ? products.filter(search(searchTerm))
       : rawFilteredProducts.filter(search(searchTerm));
+
   return (
     <Fragment>
       <GlobalStyle />
