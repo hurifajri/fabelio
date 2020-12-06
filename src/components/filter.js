@@ -8,9 +8,10 @@ export default ({ placeholderButtonLabel, data, onChange, value }) => {
   // Check only array of string to convert, otherwise keep the original data
   const options = typeof data[0] !== 'object' ? data.map(convertToObj) : data;
 
+  // Dropdown style
   const styles = {
     control: () => ({
-      display: 'none',
+      display: 'none', // Remove dropdown control search
     }),
     menu: () => ({
       borderRadius: 'var(--radius)',

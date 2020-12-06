@@ -16,14 +16,12 @@ export default props => {
   const limitedDescription = description.substr(0, 114) + '...';
 
   // Iterate through furniture_styles array
-  const furnitureStyleItem = furnitureStyle?.map((style, i) => (
-    <li key={i}>
-      {style +
-        (i !== furnitureStyle.length - i && furnitureStyle.length !== 1
-          ? ','
-          : '')}
-    </li>
-  ));
+  const item = (style, i) => {
+    const hasColon =
+      i !== furnitureStyle.length - i && furnitureStyle.length !== 1 ? ',' : '';
+    return <li key={i}>{style + hasColon}</li>;
+  };
+  const furnitureStyleItem = furnitureStyle.map(item);
 
   return (
     <Card>
@@ -31,10 +29,10 @@ export default props => {
         <Title>{name}</Title>
         <Subtitle>{formattedPrice}</Subtitle>
       </CardHeader>
-      <CardBody>
-        <Description>{limitedDescription}</Description>
+      <content>
+        <p>{limitedDescription}</p>
         <List>{furnitureStyleItem}</List>
-      </CardBody>
+      </content>
       <CardFooter>
         <FooterTitle>Pengiriman: {deliveryTime} hari</FooterTitle>
       </CardFooter>
@@ -65,10 +63,6 @@ const Subtitle = styled.span`
   font-size: var(--size-normal);
   font-weight: var(--weight-bold);
 `;
-
-const CardBody = styled.div``;
-
-const Description = styled.p``;
 
 const List = styled.ul`
   display: flex;
