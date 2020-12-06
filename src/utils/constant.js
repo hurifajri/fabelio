@@ -1,4 +1,4 @@
-export const BASE = 'http://www.mocky.io/v2';
+export const BASE = 'https://www.mocky.io/v2';
 export const ID = '/5c9105cb330000112b649af8';
 export const SEARCH = 'Search Furniture';
 export const FILTER_FURNITURE = 'Furniture Style';
