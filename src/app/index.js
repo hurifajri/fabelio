@@ -34,19 +34,16 @@ export default () => {
   const handleChangeSearch = event => setSearchTerm(event.target.value);
 
   // Store the selected furniture style from the filter and get only the label
-  const [selectedStyle, setSelectedStyle] = useState(null);
+  const [selectedStyle, setSelectedStyle] = useState([]);
   const selectedStyleLabel = selectedStyle?.map(item => item.label);
 
   // Store the selected furniture style from the filter and get only the value
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedTime, setSelectedTime] = useState([]);
   const selectedTimeValue = selectedTime?.map(item => item.value);
 
-  // HOC callback for filterSearch
+  // Determines whether search term is match to product name
   const search = searchTerm => product =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase());
-
-  // Determines whether search term is match to product name
-  const filterSearch = products.filter(search(searchTerm));
 
   // Determines whether filter for furniture style is selected
   const filterStyle = products?.filter(product =>
@@ -75,18 +72,12 @@ export default () => {
     (item, index) => joinedFilteredProducts.indexOf(item) === index
   );
 
-  const filteredProducts = searchTerm
-    ? rawFilteredProducts.filter(search(searchTerm))
-    : rawFilteredProducts;
-
-  console.log(Boolean(selectedTime));
-  console.log('filterSearch', filterSearch);
-  console.log('filterStyle', filterStyle);
-  console.log('filterTime', filterTime);
-  console.log('filterTimeMore', filterTimeMore);
-  console.log('joinedFilteredProducts', joinedFilteredProducts);
-  console.log('rawFilteredProducts', rawFilteredProducts);
-  console.log('filteredProducts', filteredProducts);
+  const filteredProducts =
+    !searchTerm && selectedStyle.length === 0 && selectedTime.length === 0
+      ? products
+      : searchTerm && selectedStyle.length === 0 && selectedTime.length === 0
+      ? products.filter(search(searchTerm))
+      : rawFilteredProducts.filter(search(searchTerm));
   return (
     <Fragment>
       <GlobalStyle />
