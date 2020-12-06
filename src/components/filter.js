@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
-export default ({ placeholderButtonLabel }) => {
-  const options = [
-    { label: 'Thing 1', value: 1 },
-    { label: 'Thing 2', value: 2 },
-  ];
+export default ({ placeholderButtonLabel, data, onChange, value }) => {
+  // Convert string to object
+  const convertToObj = (string, index) => ({ label: string, value: index + 1 });
+
+  // Check only array of string to convert, otherwise keep the original data
+  const options = typeof data[0] !== 'object' ? data.map(convertToObj) : data;
 
   const styles = {
     control: () => ({
@@ -29,11 +30,13 @@ export default ({ placeholderButtonLabel }) => {
   return (
     <ReactMultiSelectCheckboxes
       options={options}
+      defaultValue={value}
+      value={value}
+      onChange={onChange}
       placeholderButtonLabel={placeholderButtonLabel}
       styles={styles}
       width="100%"
       rightAligned={true}
-      className="custom-container"
     />
   );
 };

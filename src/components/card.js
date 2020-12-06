@@ -17,7 +17,12 @@ export default props => {
 
   // Iterate through furniture_styles array
   const furnitureStyleItem = furnitureStyle?.map((style, i) => (
-    <li key={i}>{style + (i !== furnitureStyle.length - i ? ',' : '')}</li>
+    <li key={i}>
+      {style +
+        (i !== furnitureStyle.length - i && furnitureStyle.length !== 1
+          ? ','
+          : '')}
+    </li>
   ));
 
   return (
