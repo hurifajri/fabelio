@@ -1,10 +1,9 @@
 import { Card } from '../components';
 import React from 'react';
-import styled from 'styled-components';
 
 export default ({ products }) => {
   return (
-    <Main className="row">
+    <main className="row">
       {products.map(product => (
         <div className="col-6" key={product.name}>
           <Card
@@ -16,8 +15,6 @@ export default ({ products }) => {
           />
         </div>
       ))}
-    </Main>
+    </main>
   );
 };
-
-const Main = styled.main``;
