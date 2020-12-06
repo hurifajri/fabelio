@@ -1,4 +1,4 @@
-import { GlobalStyle, Path } from '../utils/';
+import { Const, GlobalStyle } from '../utils/';
 import { Header, Main } from '../containers/';
 import React, { Fragment } from 'react';
 import { useApi, useFilter } from '../hooks';
@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 export default () => {
   // Fetch data by using hook
-  const [data] = useApi(`${Path.BASE}${Path.ID}`);
+  const [data] = useApi(`${Const.BASE}${Const.ID}`);
 
   // In case the result data is undefined, assign an empty array
   const furnitureStyles = data?.furniture_styles || [];

@@ -1,4 +1,4 @@
-import * as Path from './constant';
+import * as Const from './constant';
 import GlobalStyle from './global-style';
 
-export { GlobalStyle, Path };
+export { GlobalStyle, Const };
