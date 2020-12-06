@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
-export default ({ placeholderButtonLabel, data, onChange, value }) => {
+const Filter = function ({ placeholderButtonLabel, data, onChange, value }) {
   // Convert string to object
   const convertToObj = (string, index) => ({ label: string, value: index + 1 });
 
@@ -40,4 +41,13 @@ export default ({ placeholderButtonLabel, data, onChange, value }) => {
       rightAligned={true}
     />
   );
+};
+
+export default Filter;
+
+Filter.propTypes = {
+  placeholderButtonLabel: PropTypes.string.isRequired,
+  data: PropTypes.array,
+  onChange: PropTypes.func,
+  value: PropTypes.array,
 };

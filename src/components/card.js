@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-export default props => {
+const Card = function (props) {
   const { title, subtitle, description, list, footerTitle } = props;
 
   // Create a readable price format
@@ -23,7 +24,7 @@ export default props => {
   const furnitureStyleItem = list.map(item);
 
   return (
-    <Card>
+    <CardContainer>
       <CardHeader>
         <Title>{title}</Title>
         <Subtitle>{formattedPrice}</Subtitle>
@@ -35,11 +36,21 @@ export default props => {
       <CardFooter>
         <FooterTitle>Pengiriman: {footerTitle} hari</FooterTitle>
       </CardFooter>
-    </Card>
+    </CardContainer>
   );
 };
 
-const Card = styled.div`
+export default Card;
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  description: PropTypes.string.isRequired,
+  list: PropTypes.array,
+  footerTitle: PropTypes.string,
+};
+
+const CardContainer = styled.div`
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 20px 30px;

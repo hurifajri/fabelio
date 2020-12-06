@@ -1,14 +1,25 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-export default ({ placeholder, onChange, value }) => (
-  <SearchField
-    type="search"
-    placeholder={placeholder}
-    onChange={onChange}
-    value={value}
-  />
-);
+const Search = function ({ placeholder, onChange, value }) {
+  return (
+    <SearchField
+      type="search"
+      placeholder={placeholder}
+      onChange={onChange}
+      value={value}
+    />
+  );
+};
+
+export default Search;
+
+Search.propTypes = {
+  placeholder: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
 
 const SearchField = styled.input`
   color: var(--color-white);

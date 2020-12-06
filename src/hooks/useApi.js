@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
-export default url => {
+const UseApi = function (url) {
   // Define store for result
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,4 +30,10 @@ export default url => {
   }, [url]);
 
   return [data, isLoading, isError];
+};
+
+export default UseApi;
+
+UseApi.propTypes = {
+  url: PropTypes.string.isRequired,
 };

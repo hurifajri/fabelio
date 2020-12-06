@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import { useSearch } from '../hooks';
 import { useState } from 'react';
 
-export default data => {
+const UseFilter = function (data) {
   // Store the selected furniture style and delivery time from the filters and get only the label and value
   const [selectedStyle, setSelectedStyle] = useState([]);
   const [selectedTime, setSelectedTime] = useState([]);
@@ -64,4 +65,10 @@ export default data => {
     setSelectedTime,
     filteredProducts,
   ];
+};
+
+export default UseFilter;
+
+UseFilter.propTypes = {
+  data: PropTypes.array.isRequired,
 };
