@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default props => {
-  const { name, price, description, furnitureStyle, deliveryTime } = props;
+  const { title, subtitle, description, list, footerTitle } = props;
 
   // Create a readable price format
   const formattedPrice = new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR',
   })
-    .format(price)
+    .format(subtitle)
     .replace(/(\.|,)00$/g, '');
 
   // Limit character for description
@@ -17,16 +17,15 @@ export default props => {
 
   // Iterate through furniture_styles array
   const item = (style, i) => {
-    const hasColon =
-      i !== furnitureStyle.length - i && furnitureStyle.length !== 1 ? ',' : '';
+    const hasColon = i !== list.length - i && list.length !== 1 ? ',' : '';
     return <li key={i}>{style + hasColon}</li>;
   };
-  const furnitureStyleItem = furnitureStyle.map(item);
+  const furnitureStyleItem = list.map(item);
 
   return (
     <Card>
       <CardHeader>
-        <Title>{name}</Title>
+        <Title>{title}</Title>
         <Subtitle>{formattedPrice}</Subtitle>
       </CardHeader>
       <content>
@@ -34,7 +33,7 @@ export default props => {
         <List>{furnitureStyleItem}</List>
       </content>
       <CardFooter>
-        <FooterTitle>Pengiriman: {deliveryTime} hari</FooterTitle>
+        <FooterTitle>Pengiriman: {footerTitle} hari</FooterTitle>
       </CardFooter>
     </Card>
   );

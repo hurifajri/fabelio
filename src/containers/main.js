@@ -7,11 +7,11 @@ export default ({ products }) => {
       {products.map(product => (
         <div className="col-6" key={product.name}>
           <Card
-            name={product.name}
-            price={product.price}
+            title={product.name}
+            subtitle={product.price}
             description={product.description}
-            furnitureStyle={product.furniture_style}
-            deliveryTime={product.delivery_time}
+            list={product.furniture_style}
+            footerTitle={product.delivery_time}
           />
         </div>
       ))}
