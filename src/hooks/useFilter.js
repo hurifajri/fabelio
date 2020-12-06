@@ -2,49 +2,47 @@ import { useSearch } from '../hooks';
 import { useState } from 'react';
 
 export default data => {
-  // Use search custom hook
-  const [searchTerm, handleChangeSearch] = useSearch();
-
   // Store the selected furniture style and delivery time from the filters and get only the label and value
   const [selectedStyle, setSelectedStyle] = useState([]);
   const [selectedTime, setSelectedTime] = useState([]);
   const getItem = (array, callback) => array.map(callback);
-  const labelCallback = item => item.label;
-  const valueCallback = item => item.value;
-  const selectedStyleLabel = getItem(selectedStyle, labelCallback);
-  const selectedTimeValue = getItem(selectedTime, valueCallback);
+  const label = item => item.label;
+  const value = item => item.value;
+  const styleLabel = getItem(selectedStyle, label);
+  const timeValue = getItem(selectedTime, value);
 
   // Determines whether filter for furniture style is selected
-  const filterStyle = data.filter(({ furniture_style }) =>
-    selectedStyleLabel.some(item => furniture_style.indexOf(item) >= 0)
-  );
+  const hasStyle = ({ furniture_style }) =>
+    styleLabel.some(item => furniture_style.indexOf(item) >= 0);
+  const filterStyle = data.filter(hasStyle);
 
   // Determines whether filter for exact delivery time is selected
-  const filterTime = data.filter(({ delivery_time }) =>
-    selectedTimeValue.includes(parseInt(delivery_time))
-  );
+  const hasTime = ({ delivery_time }) =>
+    timeValue.includes(parseInt(delivery_time));
+  const filterTime = data.filter(hasTime);
 
   // Determines whether filter for non-exact delivery time is selected
-  const filterTimeMore = selectedTimeValue.includes(0)
-    ? data.filter(({ delivery_time }) => parseInt(delivery_time) % 7 !== 0)
+  const isNotMatchTime = ({ delivery_time }) =>
+    parseInt(delivery_time) % 7 !== 0;
+  const filterTimeMore = timeValue.includes(0)
+    ? data.filter(isNotMatchTime)
     : [];
 
-  // Filter products by search term, furniture style and delivery time
-  const joinedFilteredProducts = [
-    ...filterStyle,
-    ...filterTime,
-    ...filterTimeMore,
-  ];
+  // Join the filtered result products by furniture style and delivery time
+  const joinedFilter = [...filterStyle, ...filterTime, ...filterTimeMore];
 
-  // Remove duplicate element
-  const rawFilteredProducts = joinedFilteredProducts.filter(
-    (item, index) => joinedFilteredProducts.indexOf(item) === index
-  );
+  // Remove duplicate element of the joined filter
+  const isUnique = (item, index) => joinedFilter.indexOf(item) === index;
+  const rawFilteredProducts = joinedFilter.filter(isUnique);
 
   // Determines whether search term is match to product name
   const search = searchTerm => ({ name }) =>
     name.toLowerCase().includes(searchTerm.toLowerCase());
 
+  // Use search custom hook
+  const [searchTerm, handleChangeSearch] = useSearch();
+
+  // Helper function to determine the empty array
   const isEmpty = array => array.length === 0;
 
   const filteredProducts =
