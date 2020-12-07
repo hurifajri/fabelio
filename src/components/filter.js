@@ -7,7 +7,8 @@ const Filter = function ({ placeholderButtonLabel, data, onChange, value }) {
   const convertToObj = (string, index) => ({ label: string, value: index + 1 });
 
   // Check only array of string to convert, otherwise keep the original data
-  const options = typeof data[0] !== 'object' ? data.map(convertToObj) : data;
+  const options =
+    data && typeof data[0] !== 'object' ? data.map(convertToObj) : data;
 
   // Dropdown style
   const styles = {
@@ -31,7 +32,7 @@ const Filter = function ({ placeholderButtonLabel, data, onChange, value }) {
   };
   return (
     <ReactMultiSelectCheckboxes
-      options={options}
+      options={options || []}
       defaultValue={value}
       value={value}
       onChange={onChange}
@@ -46,7 +47,7 @@ const Filter = function ({ placeholderButtonLabel, data, onChange, value }) {
 export default Filter;
 
 Filter.propTypes = {
-  placeholderButtonLabel: PropTypes.string.isRequired,
+  placeholderButtonLabel: PropTypes.string,
   data: PropTypes.array,
   onChange: PropTypes.func,
   value: PropTypes.array,

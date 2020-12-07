@@ -15,6 +15,10 @@ const Search = function ({ placeholder, onChange, value }) {
 
 export default Search;
 
+Search.defaultProps = {
+  placeholder: 'Search',
+};
+
 Search.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func,

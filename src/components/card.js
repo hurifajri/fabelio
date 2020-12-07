@@ -29,10 +29,10 @@ const Card = function (props) {
         <Title>{title}</Title>
         <Subtitle>{formattedPrice}</Subtitle>
       </CardHeader>
-      <content>
+      <div>
         <p>{limitedDescription}</p>
         <List>{furnitureStyleItem}</List>
-      </content>
+      </div>
       <CardFooter>
         <FooterTitle>Pengiriman: {footerTitle} hari</FooterTitle>
       </CardFooter>
