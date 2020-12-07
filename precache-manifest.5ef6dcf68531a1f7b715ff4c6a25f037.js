@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "75b3317cab6931b43ba986e73df350d3",
+    "revision": "6784940a1cbc6f2f7ea1552573d9465c",
     "url": "/fabelio/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fabelio/static/js/2.abc52015.chunk.js.LICENSE"
   },
   {
-    "revision": "b87de2d677b2c005eb35",
-    "url": "/fabelio/static/js/main.0d1c9e01.chunk.js"
+    "revision": "91b0655091b43b5932f2",
+    "url": "/fabelio/static/js/main.2b9474be.chunk.js"
   },
   {
     "revision": "5b77c8cdf11cb31f45b8",

@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/fabelio/static/js/main.0d1c9e01.chunk.js",
-    "main.js.map": "/fabelio/static/js/main.0d1c9e01.chunk.js.map",
+    "main.js": "/fabelio/static/js/main.2b9474be.chunk.js",
+    "main.js.map": "/fabelio/static/js/main.2b9474be.chunk.js.map",
     "runtime-main.js": "/fabelio/static/js/runtime-main.25b43db3.js",
     "runtime-main.js.map": "/fabelio/static/js/runtime-main.25b43db3.js.map",
     "static/js/2.abc52015.chunk.js": "/fabelio/static/js/2.abc52015.chunk.js",
     "static/js/2.abc52015.chunk.js.map": "/fabelio/static/js/2.abc52015.chunk.js.map",
     "index.html": "/fabelio/index.html",
-    "precache-manifest.b87c9be46894af68ef5c0a3e96502c41.js": "/fabelio/precache-manifest.b87c9be46894af68ef5c0a3e96502c41.js",
+    "precache-manifest.5ef6dcf68531a1f7b715ff4c6a25f037.js": "/fabelio/precache-manifest.5ef6dcf68531a1f7b715ff4c6a25f037.js",
     "service-worker.js": "/fabelio/service-worker.js",
     "static/js/2.abc52015.chunk.js.LICENSE": "/fabelio/static/js/2.abc52015.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.25b43db3.js",
     "static/js/2.abc52015.chunk.js",
-    "static/js/main.0d1c9e01.chunk.js"
+    "static/js/main.2b9474be.chunk.js"
   ]
 }
