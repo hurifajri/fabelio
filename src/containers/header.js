@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = function (props) {
+const HeaderContainer = function (props) {
   const {
     searchTerm,
     onChangeSearch,
@@ -16,8 +16,8 @@ const Header = function (props) {
   } = props;
 
   return (
-    <HeaderContainer className="row">
-      <div className="col-12">
+    <Header>
+      <div className="container">
         <div className="row">
           <div className="col-6">
             <Search
@@ -46,13 +46,13 @@ const Header = function (props) {
           </div>
         </div>
       </div>
-    </HeaderContainer>
+    </Header>
   );
 };
 
-export default Header;
+export default HeaderContainer;
 
-Header.propTypes = {
+HeaderContainer.propTypes = {
   searchTerm: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChangeSearch: PropTypes.func,
   furnitureStyles: PropTypes.array,
@@ -62,6 +62,6 @@ Header.propTypes = {
   onSelectTime: PropTypes.func,
 };
 
-const HeaderContainer = styled.header`
+const Header = styled.header`
   background-color: var(--color-primary);
 `;

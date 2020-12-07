@@ -2,7 +2,6 @@ import { Const, GlobalStyle } from '../utils/';
 import { Header, Main } from '../containers/';
 import React, { Fragment } from 'react';
 import { useApi, useFilter } from '../hooks';
-import styled from 'styled-components';
 
 export default () => {
   // Fetch data by using hook
@@ -26,23 +25,16 @@ export default () => {
   return (
     <Fragment>
       <GlobalStyle />
-      <Container className="container">
-        <Header
-          furnitureStyles={furnitureStyles}
-          searchTerm={searchTerm}
-          onChangeSearch={handleChangeSearch}
-          selectedStyle={selectedStyle}
-          onSelectStyle={setSelectedStyle}
-          selectedTime={selectedTime}
-          onSelectTime={setSelectedTime}
-        />
-        <Main products={filteredProducts} isLoading={isLoading} />
-      </Container>
+      <Header
+        furnitureStyles={furnitureStyles}
+        searchTerm={searchTerm}
+        onChangeSearch={handleChangeSearch}
+        selectedStyle={selectedStyle}
+        onSelectStyle={setSelectedStyle}
+        selectedTime={selectedTime}
+        onSelectTime={setSelectedTime}
+      />
+      <Main products={filteredProducts} isLoading={isLoading} />
     </Fragment>
   );
 };
-
-const Container = styled.div`
-  width: 100%;
-  max-width: 100rem;
-`;
