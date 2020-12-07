@@ -2,39 +2,25 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-const CardComponent = function (props) {
-  const { title, subtitle, description, list, footerTitle } = props;
-
-  // Create a readable price format
-  const formattedPrice = new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-  })
-    .format(subtitle)
-    .replace(/(\.|,)00$/g, '');
-
-  // Limit character for description
-  const limitedDescription = description.substr(0, 114) + '...';
-
-  // Iterate through furniture_styles array
-  const item = (style, i) => {
-    const hasColon = i !== list.length - i && list.length !== 1 ? ',' : '';
-    return <li key={i}>{style + hasColon}</li>;
-  };
-  const furnitureStyleItem = list.map(item);
-
+const CardComponent = function ({
+  title,
+  subtitle,
+  description,
+  list,
+  footerTitle,
+}) {
   return (
     <Card>
       <CardHeader>
         <Title>{title}</Title>
-        <Subtitle>{formattedPrice}</Subtitle>
+        <Subtitle>{subtitle}</Subtitle>
       </CardHeader>
       <div>
-        <p>{limitedDescription}</p>
-        <List>{furnitureStyleItem}</List>
+        <p>{description}</p>
+        <List>{list}</List>
       </div>
       <CardFooter>
-        <FooterTitle>Pengiriman: {footerTitle} hari</FooterTitle>
+        <FooterTitle>{footerTitle}</FooterTitle>
       </CardFooter>
     </Card>
   );
