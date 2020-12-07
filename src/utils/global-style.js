@@ -60,6 +60,10 @@ body {
   order: 2;
 }
 
+.filter button + div {
+  width: 100%;
+}
+
 /**
 *** SIMPLE GRID
 *** (C) ZACH COLE 2016

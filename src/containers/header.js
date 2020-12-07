@@ -28,7 +28,7 @@ const Header = function (props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-6">
+          <div className="col-6 filter">
             <Filter
               placeholderButtonLabel={Const.FILTER_FURNITURE}
               data={furnitureStyles}
@@ -36,7 +36,7 @@ const Header = function (props) {
               onChange={onSelectStyle}
             />
           </div>
-          <div className="col-6">
+          <div className="col-6 filter">
             <Filter
               placeholderButtonLabel={Const.FILTER_DELIVERY}
               data={Const.DELIVERY_TIME}
