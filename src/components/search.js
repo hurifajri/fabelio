@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-const Search = function ({ placeholder, onChange, value }) {
+const SearchComponent = function ({ placeholder, onChange, value }) {
   return (
-    <SearchField
+    <Search
       type="search"
       placeholder={placeholder}
       onChange={onChange}
@@ -13,19 +13,19 @@ const Search = function ({ placeholder, onChange, value }) {
   );
 };
 
-export default Search;
+export default SearchComponent;
 
-Search.defaultProps = {
+SearchComponent.defaultProps = {
   placeholder: 'Search',
 };
 
-Search.propTypes = {
+SearchComponent.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-const SearchField = styled.input`
+const Search = styled.input`
   color: var(--color-white);
   font-size: var(--size-big);
   font-weight: var(--weight-bold);

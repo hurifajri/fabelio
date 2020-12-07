@@ -1,8 +1,13 @@
+import Filter from 'react-multiselect-checkboxes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
-const Filter = function ({ placeholderButtonLabel, data, onChange, value }) {
+const FilterComponent = function ({
+  placeholderButtonLabel,
+  data,
+  onChange,
+  value,
+}) {
   // Convert string to object
   const convertToObj = (string, index) => ({ label: string, value: index + 1 });
 
@@ -31,7 +36,7 @@ const Filter = function ({ placeholderButtonLabel, data, onChange, value }) {
     }),
   };
   return (
-    <ReactMultiSelectCheckboxes
+    <Filter
       options={options || []}
       defaultValue={value}
       value={value}
@@ -44,9 +49,9 @@ const Filter = function ({ placeholderButtonLabel, data, onChange, value }) {
   );
 };
 
-export default Filter;
+export default FilterComponent;
 
-Filter.propTypes = {
+FilterComponent.propTypes = {
   placeholderButtonLabel: PropTypes.string,
   data: PropTypes.array,
   onChange: PropTypes.func,

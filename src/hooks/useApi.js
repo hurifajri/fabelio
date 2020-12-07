@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-const UseApi = function (url) {
+const useApiHook = function (url) {
   // Define store for result
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,8 +32,8 @@ const UseApi = function (url) {
   return [data, isLoading, isError];
 };
 
-export default UseApi;
+export default useApiHook;
 
-UseApi.propTypes = {
+useApiHook.propTypes = {
   url: PropTypes.string.isRequired,
 };

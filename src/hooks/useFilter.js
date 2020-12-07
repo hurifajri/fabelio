@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useSearch } from '../hooks';
 import { useState } from 'react';
 
-const UseFilter = function (data) {
+const useFilterHook = function (data) {
   // Determines whether search term is match to product name
   const search = searchTerm => ({ name }) =>
     name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -68,8 +68,8 @@ const UseFilter = function (data) {
   ];
 };
 
-export default UseFilter;
+export default useFilterHook;
 
-UseFilter.propTypes = {
+useFilterHook.propTypes = {
   data: PropTypes.array.isRequired,
 };
