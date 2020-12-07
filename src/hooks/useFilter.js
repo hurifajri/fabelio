@@ -3,7 +3,17 @@ import { useSearch } from '../hooks';
 import { useState } from 'react';
 
 const UseFilter = function (data) {
-  // Store the selected furniture style and delivery time from the filters and get only the label and value
+  // Determines whether search term is match to product name
+  const search = searchTerm => ({ name }) =>
+    name.toLowerCase().includes(searchTerm.toLowerCase());
+
+  // Use search custom hook
+  const [searchTerm, handleChangeSearch] = useSearch();
+
+  // Helper function to determine the given array is empty
+  const isEmpty = array => array.length === 0;
+
+  // Store selected furniture style and delivery time from filters and get only label and value
   const [selectedStyle, setSelectedStyle] = useState([]);
   const [selectedTime, setSelectedTime] = useState([]);
   const getItem = (array, callback) => array.map(callback);
@@ -32,29 +42,20 @@ const UseFilter = function (data) {
   // Join the filtered result products by furniture style and delivery time
   const joinedFilter = [...filterStyle, ...filterTime, ...filterTimeMore];
 
-  // Remove duplicate element of the joined filter
-  const isUnique = (item, index) => joinedFilter.indexOf(item) === index;
-  const rawFilteredProducts = joinedFilter.filter(isUnique);
+  // Merge duplicate elements of the joined filter
+  const isUnique = (item, index) => joinedFilter.indexOf(item) !== index;
 
-  // Determines whether search term is match to product name
-  const search = searchTerm => ({ name }) =>
-    name.toLowerCase().includes(searchTerm.toLowerCase());
-
-  // Use search custom hook
-  const [searchTerm, handleChangeSearch] = useSearch();
-
-  // Helper function to determine the empty array
-  const isEmpty = array => array.length === 0;
+  const rawFilteredProducts =
+    // If filter furniture style and delivery time are being use, find the specific ones
+    !isEmpty(selectedStyle) && !isEmpty(selectedTime)
+      ? joinedFilter.filter(isUnique)
+      : joinedFilter; // Otherwise, joined regular filter
 
   const filteredProducts =
     // Initial load page, show all products
-    !searchTerm && isEmpty(selectedStyle) && isEmpty(selectedTime)
-      ? data
-      : // if only search bar is used
-      searchTerm && isEmpty(selectedStyle) && isEmpty(selectedTime)
+    isEmpty(selectedStyle) && isEmpty(selectedTime)
       ? data.filter(search(searchTerm))
-      : // Otherwise, filter bar is also used
-        rawFilteredProducts.filter(search(searchTerm));
+      : rawFilteredProducts.filter(search(searchTerm)); // Otherwise
 
   return [
     searchTerm,
